@@ -59,15 +59,15 @@ module.exports = function(pdf_path, options, cb) {
   }
   else {
     err  ='error, you must specify the type of extraction you wish to perform in the options object. Allowed values are "ocr" or "text"';
-    return cb(err);;
+    return cb(err);
   }
   fs.exists(pdf_path, function (exists) {
     if (!exists) {
       err = 'no file exists at the path you specified';
       return cb(err);
     }
-    processor.process(pdf_path, options);
-    cb();
+    processor.process(pdf_path, options, cb);
+    // cb();
   });
   return processor;
 }
